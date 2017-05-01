@@ -1,9 +1,11 @@
 package com.example.eduardopalacios.myapp;
 
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
+import android.support.v4.app.Fragment;
 import android.view.View;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
@@ -28,7 +30,7 @@ import java.io.InputStreamReader;
 import java.io.OutputStreamWriter;
 
 public class Navigationdrawer extends AppCompatActivity
-        implements NavigationView.OnNavigationItemSelectedListener {
+        implements NavigationView.OnNavigationItemSelectedListener, FragmentInicio.OnFragmentInteractionListener, FragmentPerfil.OnFragmentInteractionListener, FragmentGastos.OnFragmentInteractionListener, FragmentAhorrar.OnFragmentInteractionListener {
 
 
     @Override
@@ -118,12 +120,27 @@ public class Navigationdrawer extends AppCompatActivity
         // Handle navigation view item clicks here.
         int id = item.getItemId();
 
-        if (id == R.id.nav_camera) {
+        Fragment fragment= null;
+        Boolean FragmentoSeleccionado= false;
+        if (id == R.id.nav_inicio) {
+            fragment= new FragmentInicio();
+            FragmentoSeleccionado=true;
+            getSupportActionBar().setTitle("Inicio");
 
-        } else if (id == R.id.nav_gallery) {
+        } else if (id == R.id.nav_camera) {
+            fragment= new FragmentPerfil();
+            FragmentoSeleccionado=true;
+            getSupportActionBar().setTitle("Perfil");
+
+        }else if (id == R.id.nav_gallery) {
+            fragment= new FragmentAhorrar();
+            FragmentoSeleccionado=true;
+            getSupportActionBar().setTitle("Empieza a ahorrar");
 
         } else if (id == R.id.nav_slideshow) {
-
+            fragment= new FragmentGastos();
+            FragmentoSeleccionado=true;
+            getSupportActionBar().setTitle("Mis gastos");
         } else if (id == R.id.nav_manage) {
 
         } else if (id == R.id.nav_sign) {
@@ -145,7 +162,9 @@ public class Navigationdrawer extends AppCompatActivity
 
         }
 
-
+        if(FragmentoSeleccionado){
+            getSupportFragmentManager().beginTransaction().replace(R.id.content_navigationdrawer, fragment).commit();
+        }
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
@@ -179,5 +198,10 @@ public class Navigationdrawer extends AppCompatActivity
         }
 
         return verdadero;
+    }
+
+    @Override
+    public void onFragmentInteraction(Uri uri) {
+
     }
 }
