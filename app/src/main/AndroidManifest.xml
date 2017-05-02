@@ -20,6 +20,7 @@
         <activity android:name=".MainActivity" />
         <activity android:name=".login" />
         <activity android:name=".Register_Activity" />
+        <activity android:name=".AgregarTarjeta" />
         <activity
             android:name=".Navigationdrawer"
             android:label="@string/title_activity_navigationdrawer"

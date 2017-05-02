@@ -23,8 +23,8 @@ public class AgregarTarjeta extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_agregar_tarjeta);
-        fecha= (Button) findViewById(R.id.button_fecha);
-        ed_Fecha=(EditText)findViewById(R.id.edit_fecha);
+        //fecha= (Button) findViewById(R.id.button_fecha);
+        //ed_Fecha=(EditText)findViewById(R.id.edit_fecha);
 
     }
 

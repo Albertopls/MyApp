@@ -58,7 +58,7 @@
                 <Spinner
                     android:id="@+id/spn_periodo"
                     style="@style/editText_style"
-                    android:layout_width="fill_parent"
+                    android:layout_width="158dp"
                     android:layout_height="wrap_content"
                     android:layout_margin="16dp" />
             </LinearLayout>
@@ -73,7 +73,7 @@
                 <EditText
                     android:id="@+id/edit_percent"
                     style="@style/editText_style"
-                    android:layout_width="153dp"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:ems="10"
                     android:hint="Cantidad gastada $"
@@ -82,7 +82,7 @@
                 <Spinner
                     android:id="@+id/spn_categoria"
                     style="@style/editText_style"
-                    android:layout_width="163dp"
+                    android:layout_width="120dp"
                     android:layout_height="wrap_content"
                     android:ems="10"
                     android:inputType="number" />
@@ -138,7 +138,7 @@
                     android:text="LIMPIAR"
                     android:textColor="#FFFFFF"
                     android:textSize="15sp"
-                    android:layout_weight="0.21" />
+                    android:layout_weight="0.16" />
 
                 <Button
                     android:id="@+id/Button_VerInforme"

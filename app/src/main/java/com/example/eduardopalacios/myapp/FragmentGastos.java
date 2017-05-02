@@ -71,7 +71,7 @@ public class FragmentGastos extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View view= inflater.inflate(R.layout.fragment_fragment_gastos, container, false);
-
+    /*
         //Spinner tiempo
         spinner_periodo = (Spinner)view.findViewById(R.id.spn_periodo);
         contenido_periodo=new String[]{"Dia", "Mes", "Año"};
@@ -85,7 +85,7 @@ public class FragmentGastos extends Fragment {
         adapter= new ArrayAdapter<String>(this.getContext(), android.R.layout.simple_list_item_1);
         spinner_categoria.setAdapter(adapter);
 
-
+*/
         return view;
     }
 

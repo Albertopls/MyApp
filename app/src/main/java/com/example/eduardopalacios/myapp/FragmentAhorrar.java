@@ -41,7 +41,7 @@ public class FragmentAhorrar extends Fragment {
 
     //SPINNERS
     Spinner spinner_meta, spinner_tiempo, spinner_cargo;
-    String[]contenido_meta, contenido_tiempo, contenido_cargo;
+
     ArrayAdapter <String> adapter;
 
     private OnFragmentInteractionListener mListener;
@@ -110,18 +110,21 @@ public class FragmentAhorrar extends Fragment {
         });
 
         spinner_meta= (Spinner)view.findViewById(R.id.spn_1);
-        contenido_meta=new String[]{"1000", "10000", "100000"};
-        adapter= new ArrayAdapter<String>(this.getContext(), android.R.layout.simple_list_item_1);
+        String contenido_meta []={"1000", "10000", "100000"};
+        adapter= new ArrayAdapter<String>(this.getContext(), android.R.layout.simple_spinner_item, contenido_meta);
+        adapter.setDropDownViewResource(android.R.layout.simple_dropdown_item_1line);
         spinner_meta.setAdapter(adapter);
 
         spinner_cargo= (Spinner)view.findViewById(R.id.spn_2);
-        contenido_cargo=new String[]{"Dia", "Mensual", "Anual"};
-        adapter= new ArrayAdapter<String>(this.getActivity(), android.R.layout.simple_list_item_1);
+        String [] contenido_cargo={"Diario", "Mensual", "Anual"};
+        adapter= new ArrayAdapter<String>(this.getActivity(), android.R.layout.simple_spinner_item, contenido_cargo);
+        adapter.setDropDownViewResource(android.R.layout.simple_dropdown_item_1line);
         spinner_cargo.setAdapter(adapter);
 
         spinner_tiempo= (Spinner)view.findViewById(R.id.spn_3);
-        contenido_tiempo=new String[]{"1 año", "2 años", "3 años"};
-        adapter= new ArrayAdapter<String>(this.getActivity(), android.R.layout.simple_list_item_1);
+        String [] contenido_tiempo=new String[]{"1 año", "2 años", "3 años"};
+        adapter= new ArrayAdapter<String>(this.getActivity(), android.R.layout.simple_spinner_item, contenido_tiempo);
+        adapter.setDropDownViewResource(android.R.layout.simple_dropdown_item_1line);
         spinner_tiempo.setAdapter(adapter);
 
 
