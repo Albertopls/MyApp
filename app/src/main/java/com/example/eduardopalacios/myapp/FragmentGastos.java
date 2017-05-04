@@ -31,7 +31,6 @@ public class FragmentGastos extends Fragment {
 
 
     Spinner spinner_categoria, spinner_periodo;
-    String[]contenido_categoria, contenido_periodo ;
     ArrayAdapter<String> adapter;
 
     private OnFragmentInteractionListener mListener;
@@ -71,21 +70,24 @@ public class FragmentGastos extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View view= inflater.inflate(R.layout.fragment_fragment_gastos, container, false);
-    /*
+        inicializarComponentes(view);
+
         //Spinner tiempo
-        spinner_periodo = (Spinner)view.findViewById(R.id.spn_periodo);
-        contenido_periodo=new String[]{"Dia", "Mes", "Año"};
-        adapter= new ArrayAdapter<String>(this.getContext(), android.R.layout.simple_list_item_1);
-        spinner_categoria.setAdapter(adapter);
+
+        String contenido_periodo[]={"Dia", "Mes", "Año"};
+        adapter= new ArrayAdapter<String>(this.getContext(), android.R.layout.simple_spinner_item, contenido_periodo);
+        adapter.setDropDownViewResource(android.R.layout.simple_dropdown_item_1line);
+        spinner_periodo.setAdapter(adapter);
 
 
         //Spinner categoria
-        spinner_categoria = (Spinner)view.findViewById(R.id.spn_categoria);
-        contenido_categoria=new String[]{"Entretenimiento", "Comida", "Trabajo", "Transporte", "Otros"};
-        adapter= new ArrayAdapter<String>(this.getContext(), android.R.layout.simple_list_item_1);
+
+        String contenido_categoria[]={"Entretenimiento", "Comida", "Trabajo", "Transporte", "Otros"};
+        adapter= new ArrayAdapter<String>(this.getContext(), android.R.layout.simple_spinner_item, contenido_categoria);
+        adapter.setDropDownViewResource(android.R.layout.simple_dropdown_item_1line);
         spinner_categoria.setAdapter(adapter);
 
-*/
+
         return view;
     }
 
@@ -126,5 +128,12 @@ public class FragmentGastos extends Fragment {
     public interface OnFragmentInteractionListener {
         // TODO: Update argument type and name
         void onFragmentInteraction(Uri uri);
+    }
+
+    //Métodos
+    public void inicializarComponentes(View view){
+        spinner_periodo = (Spinner)view.findViewById(R.id.spn_periodo);
+        spinner_categoria = (Spinner)view.findViewById(R.id.spn_categoria);
+
     }
 }

@@ -11,7 +11,9 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.HorizontalScrollView;
+import android.widget.ImageButton;
 import android.widget.Spinner;
 import android.widget.TabHost;
 
@@ -44,25 +46,16 @@ public class FragmentAhorrar extends Fragment {
 
     ArrayAdapter <String> adapter;
 
+    //BOTONES
+    Button boton_guardar;
+    ImageButton boton_porcentaje, boton_pesos;
+
+    //EditText
+    EditText ed_Porcentaje, ed_pesos;
+
     private OnFragmentInteractionListener mListener;
 
 
-    //PESTAÑAS
-    class FakeContent implements TabHost.TabContentFactory {
-        private final Context mContext;
-
-        public FakeContent(Context context) {
-            mContext = context;
-        }
-
-        @Override
-        public View createTabContent(String tag) {
-            View v = new View(mContext);
-            v.setMinimumHeight(0);
-            v.setMinimumWidth(0);
-            return v;
-        }
-    }
 
     public FragmentAhorrar() {
         // Required empty public constructor
@@ -99,8 +92,58 @@ public class FragmentAhorrar extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View view=inflater.inflate(R.layout.fragment_fragment_ahorrar, container, false);
-        Button btn = (Button)view.findViewById(R.id.Button3);
-        btn.setOnClickListener(new View.OnClickListener() {
+        inicializar_componentes(view);
+
+        //Spinners
+
+        String contenido_meta []={"1000", "10000", "100000"};
+        adapter= new ArrayAdapter<String>(this.getContext(), android.R.layout.simple_spinner_item, contenido_meta);
+        adapter.setDropDownViewResource(android.R.layout.simple_dropdown_item_1line);
+        spinner_meta.setAdapter(adapter);
+
+
+        String [] contenido_cargo={"Diario", "Mensual", "Anual"};
+        adapter= new ArrayAdapter<String>(this.getActivity(), android.R.layout.simple_spinner_item, contenido_cargo);
+        adapter.setDropDownViewResource(android.R.layout.simple_dropdown_item_1line);
+        spinner_cargo.setAdapter(adapter);
+
+
+        String [] contenido_tiempo=new String[]{"1 año", "2 años", "3 años"};
+        adapter= new ArrayAdapter<String>(this.getActivity(), android.R.layout.simple_spinner_item, contenido_tiempo);
+        adapter.setDropDownViewResource(android.R.layout.simple_dropdown_item_1line);
+        spinner_tiempo.setAdapter(adapter);
+
+        //Botones
+
+        //Boton procentaje
+
+        boton_porcentaje.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View view){
+                ed_Porcentaje.setEnabled(true);
+                ed_Porcentaje.setFocusable(true);
+                ed_Porcentaje.setEnabled(true);
+                ed_Porcentaje.setFocusable(false);
+            }
+        });
+
+        //Boton procentaje
+
+        boton_pesos.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View view){
+                ed_pesos.setEnabled(true);
+                ed_pesos.setFocusable(true);
+                ed_Porcentaje.setEnabled(false);
+
+            }
+        });
+
+
+
+        //Boton guardar e ir a la siguiente actividad
+
+        boton_guardar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent i = new Intent(getActivity(), AgregarTarjeta.class);
@@ -109,23 +152,7 @@ public class FragmentAhorrar extends Fragment {
             }
         });
 
-        spinner_meta= (Spinner)view.findViewById(R.id.spn_1);
-        String contenido_meta []={"1000", "10000", "100000"};
-        adapter= new ArrayAdapter<String>(this.getContext(), android.R.layout.simple_spinner_item, contenido_meta);
-        adapter.setDropDownViewResource(android.R.layout.simple_dropdown_item_1line);
-        spinner_meta.setAdapter(adapter);
 
-        spinner_cargo= (Spinner)view.findViewById(R.id.spn_2);
-        String [] contenido_cargo={"Diario", "Mensual", "Anual"};
-        adapter= new ArrayAdapter<String>(this.getActivity(), android.R.layout.simple_spinner_item, contenido_cargo);
-        adapter.setDropDownViewResource(android.R.layout.simple_dropdown_item_1line);
-        spinner_cargo.setAdapter(adapter);
-
-        spinner_tiempo= (Spinner)view.findViewById(R.id.spn_3);
-        String [] contenido_tiempo=new String[]{"1 año", "2 años", "3 años"};
-        adapter= new ArrayAdapter<String>(this.getActivity(), android.R.layout.simple_spinner_item, contenido_tiempo);
-        adapter.setDropDownViewResource(android.R.layout.simple_dropdown_item_1line);
-        spinner_tiempo.setAdapter(adapter);
 
 
         return view;
@@ -158,18 +185,21 @@ public class FragmentAhorrar extends Fragment {
 
 
 
-    /**
-     * This interface must be implemented by activities that contain this
-     * fragment to allow an interaction in this fragment to be communicated
-     * to the activity and potentially other fragments contained in that
-     * activity.
-     * <p>
-     * See the Android Training lesson <a href=
-     * "http://developer.android.com/training/basics/fragments/communicating.html"
-     * >Communicating with Other Fragments</a> for more information.
-     */
+
     public interface OnFragmentInteractionListener {
         // TODO: Update argument type and name
         void onFragmentInteraction(Uri uri);
     }
+
+
+    public void inicializar_componentes(View view){
+        spinner_meta= (Spinner)view.findViewById(R.id.spn_1);
+        spinner_cargo= (Spinner)view.findViewById(R.id.spn_2);
+        spinner_tiempo= (Spinner)view.findViewById(R.id.spn_3);
+        boton_porcentaje= (ImageButton)view.findViewById(R.id.Button_Porcentaje);
+        boton_pesos= (ImageButton) view.findViewById(R.id.Button_Pesos);
+        boton_guardar = (Button)view.findViewById(R.id.Button3);
+        ed_Porcentaje= (EditText)view.findViewById(R.id.edit_percent);
+        ed_pesos=(EditText) view.findViewById(R.id.edit_pesos);
+   }
 }
