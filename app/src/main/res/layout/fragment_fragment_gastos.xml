@@ -71,7 +71,7 @@
                 android:weightSum="1">
 
                 <EditText
-                    android:id="@+id/edit_percent"
+                    android:id="@+id/edit_cantidad"
                     style="@style/editText_style"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
