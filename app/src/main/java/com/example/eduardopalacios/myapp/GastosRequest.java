@@ -26,8 +26,9 @@ public class GastosRequest extends StringRequest{
         super(Request.Method.POST, GASTOS_REQUEST_URL,listener,null);
         params=new HashMap<>();
         params.put("cargo_gastos", cargo_gastos);
+        params.put("cantidad_gastos", cantidad);
         params.put("categoria", categoria);
-        params.put("cantidad", cantidad);
+        params.put("user_user_id", "1");
 
     }
 
