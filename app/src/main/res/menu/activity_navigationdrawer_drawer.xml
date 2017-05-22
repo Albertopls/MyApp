@@ -22,6 +22,11 @@
             android:id="@+id/nav_manage"
             android:icon="@drawable/ic_settings_black_24dp"
             android:title="Configuración" />
+
+        <item
+            android:id="@+id/reg_tarjeta"
+            android:icon="@android:drawable/ic_menu_edit"
+            android:title="Registrar Tarjeta" />
     </group>
 
     <item android:title="Sign">

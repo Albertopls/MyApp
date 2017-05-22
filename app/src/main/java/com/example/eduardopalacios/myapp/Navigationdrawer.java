@@ -44,6 +44,7 @@ public class Navigationdrawer extends AppCompatActivity
 
 
         //Agregar fracmento
+        /*
         FragmentManager fragmentManager=getSupportFragmentManager();
         fragmentManager.beginTransaction().replace(R.id.content_navigationdrawer, new FragmentInicio()).commit();
         getSupportActionBar().setTitle("Inicio");
@@ -56,10 +57,13 @@ public class Navigationdrawer extends AppCompatActivity
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
+        */
 
        Intent intent2=getIntent();
 
         String first_name2=intent2.getStringExtra("identificador");
+
+
         if(first_name2==null)
         {
 
@@ -162,7 +166,44 @@ public class Navigationdrawer extends AppCompatActivity
             getSupportActionBar().setTitle("Mis gastos");
         } else if (id == R.id.nav_manage) {
 
-        } else if (id == R.id.nav_sign) {
+        }
+        else if (id == R.id.reg_tarjeta) {
+
+
+            Boolean opcion;
+            Bundle bundle = getIntent().getExtras();
+            String opcions = bundle.getString("identificador_boolean");
+            opcion = Boolean.parseBoolean(opcions);
+
+            if (opcion) {
+                String valor;
+                String valor_agregartarjeta;
+
+                valor = bundle.getString("identificador_id");
+                valor_agregartarjeta = "true";
+
+
+                Intent i = new Intent(Navigationdrawer.this, AgregarTarjeta.class);
+                i.putExtra("ide", valor);
+                i.putExtra("boleano", valor_agregartarjeta);
+                startActivity(i);
+
+
+            } else {
+
+
+                Intent intent2 = getIntent();
+                String id_usuario = intent2.getStringExtra("identificador2");
+                Intent i = new Intent(Navigationdrawer.this, AgregarTarjeta.class);
+                i.putExtra("valor", id_usuario);
+                startActivity(i);
+
+
+                AgregarTarjeta agregar = new AgregarTarjeta();
+                agregar.setVisible(true);
+            }
+
+        }else if (id == R.id.nav_sign) {
 
             String cadena;
             Navigationdrawer.this.startActivity(new Intent(Navigationdrawer.this, login.class));
